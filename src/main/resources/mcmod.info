@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "mioncore",
+        "name": "MionCore",
+        "description": "Provides useful functions",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": [ "Stefan Wimmer" ],
+        "credits": "Copyright (c) 2016, Team Mion",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }
+]

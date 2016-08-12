@@ -1,0 +1,78 @@
+
+// For those who want the bleeding edge
+buildscript
+{
+    repositories
+    {
+        jcenter()
+        
+        maven
+        {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    
+    dependencies
+    {
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
+    }
+}
+
+apply plugin: "net.minecraftforge.gradle.forge"
+
+version = modver
+group= modgroup
+archivesBaseName = modid + "_" + mcversion
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft
+{
+    version = mcversion + "-" + forgeversion
+    runDir = "run"
+    
+    mappings = mcpmappings
+}
+
+dependencies
+{
+}
+
+task deobfJar(type : Jar) {
+    from sourceSets.main.output
+    
+    classifier = "deobf"
+}
+
+task deobfSourceJar(type : Jar) {
+    from sourceSets.main.java
+    from sourceSets.main.resources
+    
+    classifier = "deobf-sources"
+}
+
+artifacts
+{
+    archives deobfJar
+    archives deobfSourceJar
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+    
+    from(sourceSets.main.resources.srcDirs)
+    {
+        include "mcmod.info"
+        
+        expand "version" : project.version, "mcversion" : project.minecraft.version
+    }
+    
+    from(sourceSets.main.resources.srcDirs)
+    {
+        exclude "mcmod.info"
+    }
+}
