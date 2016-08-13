@@ -1,5 +1,3 @@
-
-// For those who want the bleeding edge
 buildscript
 {
     repositories
@@ -31,9 +29,12 @@ targetCompatibility = JavaVersion.VERSION_1_8
 minecraft
 {
     version = mcversion + "-" + forgeversion
+    
     runDir = "run"
     
     mappings = mcpmappings
+    
+    makeObfSourceJar = false
 }
 
 dependencies
@@ -50,7 +51,7 @@ task deobfSourceJar(type : Jar) {
     from sourceSets.main.java
     from sourceSets.main.resources
     
-    classifier = "deobf-sources"
+    classifier = "sources"
 }
 
 artifacts
