@@ -17,26 +17,29 @@
 package teammion.mioncore.block;
 
 import net.minecraft.item.Item;
+import teammion.mioncore.util.INameSetter;
 
 /**
  * Created on 13.08.16 at 12:24
  *
  * @author Stefan Wimmer <stefanwimmer128@gmail.com>
  */
-public class BlockCrops extends net.minecraft.block.BlockCrops
+public class BlockCrops extends net.minecraft.block.BlockCrops implements INameSetter
 {
     private Item seed;
     private Item crop;
     
-    public BlockCrops(Item seed, Item crop)
+    public BlockCrops(String name, Item seed, Item crop)
     {
         this.seed = seed;
         this.crop = crop;
+        
+        setName(name);
     }
     
-    public BlockCrops(Item both)
+    public BlockCrops(String name, Item both)
     {
-        this(both, both);
+        this(name, both, both);
     }
     
     @Override

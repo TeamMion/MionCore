@@ -9,17 +9,24 @@ buildscript
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        
+        maven
+        {
+            url = "https://plugins.gradle.org/m2"
+        }
     }
     
     dependencies
     {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.8"
     }
 }
 
 apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: "com.matthewprenger.cursegradle"
 
-version = modver
+version = modver + "-" + (release != "release" ? release + "." + releasever : "")
 group= modgroup
 archivesBaseName = modid + "_" + mcversion
 
@@ -58,6 +65,27 @@ artifacts
 {
     archives deobfJar
     archives deobfSourceJar
+}
+
+curseforge
+{
+    apiKey = System.getenv().CURSE_API_KEY ? System.getenv().CURSE_API_KEY : "devBuild"
+    
+    project
+    {
+        id = curse_id
+        
+        changelog = ""
+        
+        releaseType = release == "rc" ? "release" : release
+        
+        addGameVersion mcversion
+        
+        mainArtifact jar
+        
+        addArtifact deobfSourceJar
+        addArtifact deobfJar
+    }
 }
 
 processResources

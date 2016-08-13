@@ -16,9 +16,15 @@
 
 package teammion.mioncore;
 
+import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Mod;
+import org.apache.logging.log4j.Level;
 
 @Mod(modid = "mioncore")
 public class MionCore
 {
+    public MionCore()
+    {
+        FMLLog.log("mioncore", Level.INFO, "MionCore enabled");
+    }
 }
