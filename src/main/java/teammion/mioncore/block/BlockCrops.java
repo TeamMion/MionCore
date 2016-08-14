@@ -66,7 +66,7 @@ public class BlockCrops extends net.minecraft.block.BlockCrops implements IStack
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if (allowRightClickHarvest())
+        if (allowRightClickHarvest() && isMaxAge(state))
         {
             for (ItemStack stack : getDrops(worldIn, pos, state, 0))
             {
@@ -74,6 +74,8 @@ public class BlockCrops extends net.minecraft.block.BlockCrops implements IStack
                 
                 worldIn.setBlockState(pos, withAge(getRightClickHarvestResetState()));
             }
+            
+            return true;
         }
         
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
