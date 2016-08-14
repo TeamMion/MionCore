@@ -24,27 +24,48 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * Created on 12.08.16 at 16:52
+ * Extended GameRegistry
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public class Registry extends GameRegistry
 {
+    /**
+     * Adds a smelting recipe (see {@link GameRegistry#addSmelting(Item, ItemStack, float)})
+     * @param in Input Item
+     * @param out Output ItemStack
+     */
     public static void addSmelting(Item in, ItemStack out)
     {
         addSmelting(in, out, .2f);
     }
     
+    /**
+     * Adds a smelting recipe (see {@link GameRegistry#addSmelting(ItemStack, ItemStack, float)})
+     * @param in Input ItemStack
+     * @param out Output ItemStack
+     */
     public static void addSmelting(ItemStack in, ItemStack out)
     {
         addSmelting(in, out, .2f);
     }
     
+    /**
+     * Adds a smelting recipe (see {@link GameRegistry#addSmelting(Block, ItemStack, float)})
+     * @param in Input Block
+     * @param out Output ItemStack
+     */
     public static void addSmelting(Block in, ItemStack out)
     {
         addSmelting(in, out, .2f);
     }
     
+    /**
+     * Renders Item (see {@link net.minecraft.client.renderer.ItemModelMesher#register(Item, int, ModelResourceLocation)})
+     * @param item Item to render
+     * @param meta MetaId / Damage to render
+     * @param modelResourceLocation ModelResourceLocation for Item
+     */
     public static void render(IItem item, int meta, ModelResourceLocation modelResourceLocation)
     {
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(
@@ -52,6 +73,13 @@ public class Registry extends GameRegistry
         );
     }
     
+    /**
+     * Renders Item (see {@link #render(IItem, int, ModelResourceLocation)})
+     * @param item Item to render
+     * @param meta MetaId / Damage to render
+     * @param modid Modid of Mod
+     * @param name Name of Model
+     */
     public static void render(IItem item, int meta, String modid, String name)
     {
         render(item, meta, new ModelResourceLocation(modid + ":" + name, "inventory"));

@@ -22,10 +22,14 @@ import net.minecraft.item.Item;
 /**
  * Provide easy setName for Item/Block
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public interface INameSetter
 {
+    /**
+     * Sets registry and unlocalized name on {@code this}
+     * @param name Name to set to
+     */
     default void setName(String name)
     {
         if (this instanceof Item)

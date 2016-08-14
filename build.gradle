@@ -88,6 +88,11 @@ curseforge
     }
 }
 
+javadoc
+{
+    options.author = true
+}
+
 processResources
 {
     inputs.property "version", project.version

@@ -21,20 +21,35 @@ import net.minecraft.item.ItemStack;
 /**
  * Provide easy ItemStack creator
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public interface IStackable extends IItem
 {
+    /**
+     * Returns an ItemStack with defined stackSize and MetaId / Damage
+     * @param stackSize stackSize of ItemStack
+     * @param meta MetaId / Damage of ItemStack
+     * @return ItemStack with defined stackSize and MetaId / Damage
+     */
     default ItemStack stack(int stackSize, int meta)
     {
         return new ItemStack(item(), stackSize);
     }
     
+    /**
+     * Returns ItemStack with defined stackSize (see {@link #stack(int, int)})
+     * @param stackSize stackSize of ItemStack
+     * @return ItemStack with defined stackSize
+     */
     default ItemStack stack(int stackSize)
     {
         return stack(stackSize, 0);
     }
     
+    /**
+     * Returns ItemStack (see {@link #stack(int, int)})
+     * @return ItemStack
+     */
     default ItemStack stack()
     {
         return stack(1);

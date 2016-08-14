@@ -23,10 +23,17 @@ import teammion.mioncore.util.IStackable;
 /**
  * ItemFood base class
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public class ItemFood extends net.minecraft.item.ItemFood implements IStackable, INameSetter
 {
+    /**
+     * Creates {@link ItemFood} with Registry/Unlocalized name, amount, saturation and isWolfFood
+     * @param name Registry/Unlocalized name
+     * @param amount Food regain amount
+     * @param saturation Food saturation
+     * @param isWolfFood Says if food can be eaten by Wolfs
+     */
     public ItemFood(String name, int amount, float saturation, boolean isWolfFood)
     {
         super(amount, saturation, isWolfFood);
@@ -34,16 +41,35 @@ public class ItemFood extends net.minecraft.item.ItemFood implements IStackable,
         setName(name);
     }
     
+    /**
+     * Creates {@link ItemFood} with Registry/Unlocalized name, amount and isWolfFood
+     * @param name Registry/Unlocalized name
+     * @param amount Food regain amount
+     * @param isWolfFood Says if food can be eaten by Wolfs
+     */
     public ItemFood(String name, int amount, boolean isWolfFood)
     {
         this(name, amount, .6f, isWolfFood);
     }
     
+    /**
+     * Creates {@link ItemFood} with Registry/Unlocalized name and amount
+     * @param name Registry/Unlocalized name
+     * @param amount Food regain amound
+     */
     public ItemFood(String name, int amount)
     {
         this(name, amount, false);
     }
     
+    /**
+     * Creates {@link ItemFood} with Registry/Unlocalized name, amount, saturation, isWolfFood and CreativeTabs
+     * @param name Registry/Unlocalized name
+     * @param amount Food regain amound
+     * @param saturation Food saturation
+     * @param isWolfFood Says if food can be eaten by Wolfs
+     * @param creativeTab CreativeTabs
+     */
     public ItemFood(String name, int amount, float saturation, boolean isWolfFood, CreativeTabs creativeTab)
     {
         this(name, amount, saturation, isWolfFood);
@@ -51,11 +77,24 @@ public class ItemFood extends net.minecraft.item.ItemFood implements IStackable,
         setCreativeTab(creativeTab);
     }
     
+    /**
+     * Creates {@link ItemFood} with Registry/Unlocalized name, amount, isWolfFood and CreativeTabs
+     * @param name Registry/Unlocalized name
+     * @param amount Food regain amound
+     * @param isWolfFood Says if food can be eaten by Wolfs
+     * @param creativeTab CreativeTabs
+     */
     public ItemFood(String name, int amount, boolean isWolfFood, CreativeTabs creativeTab)
     {
         this(name, amount, .6f, isWolfFood, creativeTab);
     }
     
+    /**
+     * Creates {@link ItemFood} with Registry/Unlocalized name, amount and CreativeTabs
+     * @param name Registry/Unlocalized name
+     * @param amount Food regain amound
+     * @param creativeTab CreativeTabs
+     */
     public ItemFood(String name, int amount, CreativeTabs creativeTab)
     {
         this(name, amount, false, creativeTab);

@@ -22,10 +22,14 @@ import teammion.mioncore.util.INameSetter;
 /**
  * ItemBlock base class
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public class ItemBlock extends net.minecraft.item.ItemBlock
 {
+    /**
+     * Creates {@link ItemBlock} with Block to create from
+     * @param block Block to create ItemBlock from
+     */
     public ItemBlock(Block block)
     {
         super(block);

@@ -20,12 +20,16 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 /**
- * Provide easy to Item convert
+ * Provides easy to Item convert
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public interface IItem
 {
+    /**
+     * Returns Item based on {@code this}
+     * @return Converted Item
+     */
     default Item item()
     {
         return this instanceof Item ? (Item) this :

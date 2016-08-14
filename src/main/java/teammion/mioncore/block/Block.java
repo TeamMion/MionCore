@@ -25,10 +25,15 @@ import teammion.mioncore.util.IStackable;
 /**
  * Block base class
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public class Block extends net.minecraft.block.Block implements IStackable, INameSetter
 {
+    /**
+     * Creates {@link Block} with Registry/Unlocalized name and Material
+     * @param name Registry/Unlocalized name
+     * @param materialIn Material
+     */
     public Block(String name, Material materialIn)
     {
         super(materialIn);
@@ -36,6 +41,12 @@ public class Block extends net.minecraft.block.Block implements IStackable, INam
         setName(name);
     }
     
+    /**
+     * Creates {@link Block} with Registry/Unlocalized name, Material and MapColor
+     * @param name Registry/Unlocalized name
+     * @param materialIn Material
+     * @param color MapColor
+     */
     public Block(String name, Material materialIn, MapColor color)
     {
         super(materialIn, color);
@@ -43,6 +54,12 @@ public class Block extends net.minecraft.block.Block implements IStackable, INam
         setName(name);
     }
     
+    /**
+     * Creates {@link Block} with Registry/Unlocalized name, Material and CreativeTabs
+     * @param name Registry/Unlocalized name
+     * @param materialIn Material
+     * @param creativeTab CreativeTabs
+     */
     public Block(String name, Material materialIn, CreativeTabs creativeTab)
     {
         this(name, materialIn);
@@ -50,6 +67,13 @@ public class Block extends net.minecraft.block.Block implements IStackable, INam
         setCreativeTab(creativeTab);
     }
     
+    /**
+     * Creates {@link Block} with Registry/Unlocalized name, Material, MapColor and CreativeTabs
+     * @param name Registry/Unlocalized name
+     * @param materialIn Material
+     * @param color MapColor
+     * @param creativeTab CreativeTabs
+     */
     public Block(String name, Material materialIn, MapColor color, CreativeTabs creativeTab)
     {
         this(name, materialIn, color);

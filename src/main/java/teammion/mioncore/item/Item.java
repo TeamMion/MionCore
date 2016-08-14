@@ -23,15 +23,24 @@ import teammion.mioncore.util.IStackable;
 /**
  * Item base class
  *
- * @author Stefan Wimmer <stefanwimmer128@gmail.com>
+ * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 public class Item extends net.minecraft.item.Item implements IStackable, INameSetter
 {
+    /**
+     * Creates {@link Item} with Registry/Unlocalized name
+     * @param name Item Registry / Unlocalized name
+     */
     public Item(String name)
     {
         setName(name);
     }
     
+    /**
+     * Creates {@link Item} with Registry/Unlocalized name and CreativeTabs
+     * @param name Item Registry / Unlocalized name
+     * @param creativeTab CreativeTabs
+     */
     public Item(String name, CreativeTabs creativeTab)
     {
         this(name);
