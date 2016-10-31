@@ -28,7 +28,7 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 version = modversion
 group = "teammion." + modid
-archivesBaseName = modid
+archivesBaseName = modid + "_" + mcversion
 
 sourceCompatibility = targetCompatibility = "1.8"
 
