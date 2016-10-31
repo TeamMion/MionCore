@@ -26,12 +26,16 @@ buildscript
 apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: "com.matthewprenger.cursegradle"
 
-version = modver + "-" + (release != "release" ? release + "." + releasever : "")
-group= modgroup
-archivesBaseName = modid + "_" + mcversion
+version = modversion
+group = "teammion." + modid
+archivesBaseName = modid
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = targetCompatibility = "1.8"
+
+compileJava
+{
+    sourceCompatibility = targetCompatibility = "1.8"
+}
 
 minecraft
 {
@@ -77,7 +81,7 @@ curseforge
         
         changelog = ""
         
-        releaseType = release == "rc" ? "release" : release
+        releaseType = type == "rc" ? "release" : type
         
         addGameVersion mcversion
         
