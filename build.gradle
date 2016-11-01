@@ -1,23 +1,17 @@
-buildscript
-{
-    repositories
-    {
+buildscript {
+    repositories {
         jcenter()
         
-        maven
-        {
-            name = "forge"
+        maven {
             url = "http://files.minecraftforge.net/maven"
         }
         
-        maven
-        {
+        maven {
             url = "https://plugins.gradle.org/m2"
         }
     }
     
-    dependencies
-    {
+    dependencies {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
         classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.8"
     }
@@ -32,13 +26,11 @@ archivesBaseName = modid + "_" + mcversion
 
 sourceCompatibility = targetCompatibility = "1.8"
 
-compileJava
-{
+compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
 }
 
-minecraft
-{
+minecraft {
     version = mcversion + "-" + forgeversion
     
     runDir = "run"
@@ -48,8 +40,7 @@ minecraft
     makeObfSourceJar = false
 }
 
-dependencies
-{
+dependencies {
 }
 
 task deobfJar(type : Jar) {
@@ -65,18 +56,15 @@ task deobfSourceJar(type : Jar) {
     classifier = "sources"
 }
 
-artifacts
-{
+artifacts {
     archives deobfJar
     archives deobfSourceJar
 }
 
-curseforge
-{
+curseforge {
     apiKey = System.getenv().CURSE_API_KEY ? System.getenv().CURSE_API_KEY : "devBuild"
     
-    project
-    {
+    project {
         id = curse_id
         
         changelog = ""
@@ -92,25 +80,17 @@ curseforge
     }
 }
 
-javadoc
-{
-    options.author = true
-}
-
-processResources
-{
+processResources {
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
     
-    from(sourceSets.main.resources.srcDirs)
-    {
+    from(sourceSets.main.resources.srcDirs) {
         include "mcmod.info"
         
-        expand "version" : project.version, "mcversion" : project.minecraft.version
+        expand "version": project.version, "mcversion": project.minecraft.version
     }
     
-    from(sourceSets.main.resources.srcDirs)
-    {
+    from(sourceSets.main.resources.srcDirs) {
         exclude "mcmod.info"
     }
 }
