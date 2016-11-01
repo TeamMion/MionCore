@@ -17,14 +17,14 @@
 package teammion.mioncore.item;
 
 import net.minecraft.block.Block;
-import teammion.mioncore.util.INameSetter;
+import teammion.mioncore.util.IStackable;
 
 /**
  * ItemBlock base class
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-public class ItemBlock extends net.minecraft.item.ItemBlock
+public class ItemBlock extends net.minecraft.item.ItemBlock implements IStackable
 {
     /**
      * Creates {@link ItemBlock} with Block to create from
