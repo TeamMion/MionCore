@@ -22,8 +22,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import teammion.mioncore.api.MionCoreAPI;
 
 /**
  * Extended GameRegistry
@@ -68,12 +67,9 @@ public class Registry extends GameRegistry
      * @param meta MetaId / Damage to render
      * @param modelResourceLocation ModelResourceLocation for Item
      */
-    @SideOnly(Side.CLIENT)
     public static void registerModel(IItem item, int meta, ModelResourceLocation modelResourceLocation)
     {
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(
-                item.item(), meta, modelResourceLocation
-        );
+        MionCoreAPI.getMionCore().registerModel(item, meta, modelResourceLocation);
     }
     
     /**
@@ -82,7 +78,6 @@ public class Registry extends GameRegistry
      * @param meta MetaId / Damage to render
      * @param modelResourceLocation first param for ModelResourceLocation
      */
-    @SideOnly(Side.CLIENT)
     public static void regiserModel(IItem item, int meta, String modelResourceLocation)
     {
         registerModel(item, meta, new ModelResourceLocation(modelResourceLocation, "inventory"));

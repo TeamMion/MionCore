@@ -14,37 +14,17 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore;
+package teammion.mioncore.api;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.logging.log4j.Level;
-import teammion.mioncore.api.IMionCore;
 import teammion.mioncore.api.util.IItem;
 
 /**
- * This is just the Mod class for Forge to recognize this as a mod.
+ * Created on 05.11.16 at 00:46
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-@Mod(modid = "mioncore")
-public class MionCore implements IMionCore
+public interface IMionCore
 {
-    @Mod.Instance
-    public static MionCore instance;
-    
-    public MionCore()
-    {
-        FMLLog.log("mioncore", Level.INFO, "MionCore enabled");
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void registerModel(IItem item, int meta, ModelResourceLocation modelResourceLocation)
-    {
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item.item(), meta, modelResourceLocation);
-    }
+    void registerModel(IItem item, int meta, ModelResourceLocation modelResourceLocation);
 }
