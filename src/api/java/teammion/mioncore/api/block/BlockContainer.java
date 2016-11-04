@@ -14,27 +14,31 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.block;
+package teammion.mioncore.api.block;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import teammion.mioncore.util.INameSetter;
-import teammion.mioncore.util.IStackable;
+import net.minecraft.util.EnumBlockRenderType;
+import teammion.mioncore.api.util.INameSetter;
+import teammion.mioncore.api.util.IStackable;
 
 /**
- * Block base class
+ * BlockContainer base class
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-public class Block extends net.minecraft.block.Block implements IStackable, INameSetter
+public abstract class BlockContainer extends net.minecraft.block.BlockContainer implements IStackable, INameSetter
 {
+    private EnumBlockRenderType blockRenderType = EnumBlockRenderType.MODEL;
+    
     /**
-     * Creates {@link Block} with Registry/Unlocalized name and Material
+     * Creates {@link BlockContainer} with Registry/Unlocalized name and Material
      * @param name Registry/Unlocalized name
      * @param materialIn Material
      */
-    public Block(String name, Material materialIn)
+    public BlockContainer(String name, Material materialIn)
     {
         super(materialIn);
         
@@ -42,12 +46,12 @@ public class Block extends net.minecraft.block.Block implements IStackable, INam
     }
     
     /**
-     * Creates {@link Block} with Registry/Unlocalized name, Material and MapColor
+     * Creates {@link BlockContainer} with Registry/Unlocalized name, Material and MapColor
      * @param name Registry/Unlocalized name
      * @param materialIn Material
      * @param color MapColor
      */
-    public Block(String name, Material materialIn, MapColor color)
+    public BlockContainer(String name, Material materialIn, MapColor color)
     {
         super(materialIn, color);
         
@@ -55,12 +59,12 @@ public class Block extends net.minecraft.block.Block implements IStackable, INam
     }
     
     /**
-     * Creates {@link Block} with Registry/Unlocalized name, Material and CreativeTabs
+     * Creates {@link BlockContainer} with Registry/Unlocalized name, Material and CreativeTabs
      * @param name Registry/Unlocalized name
      * @param materialIn Material
      * @param creativeTab CreativeTabs
      */
-    public Block(String name, Material materialIn, CreativeTabs creativeTab)
+    public BlockContainer(String name, Material materialIn, CreativeTabs creativeTab)
     {
         this(name, materialIn);
         
@@ -68,16 +72,31 @@ public class Block extends net.minecraft.block.Block implements IStackable, INam
     }
     
     /**
-     * Creates {@link Block} with Registry/Unlocalized name, Material, MapColor and CreativeTabs
+     * Creates {@link BlockContainer} with Registry/Unlocalized name, Material, MapColor and CreativeTabs
      * @param name Registry/Unlocalized name
      * @param materialIn Material
      * @param color MapColor
      * @param creativeTab CreativeTabs
      */
-    public Block(String name, Material materialIn, MapColor color, CreativeTabs creativeTab)
+    public BlockContainer(String name, Material materialIn, MapColor color, CreativeTabs creativeTab)
     {
         this(name, materialIn, color);
         
         setCreativeTab(creativeTab);
+    }
+    
+    /**
+     * Sets BlockRenderType
+     * @param blockRenderType BlockRenderType
+     */
+    public void setBlockRenderType(EnumBlockRenderType blockRenderType)
+    {
+        this.blockRenderType = blockRenderType;
+    }
+    
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return blockRenderType;
     }
 }

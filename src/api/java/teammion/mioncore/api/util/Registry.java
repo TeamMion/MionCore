@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.util;
+package teammion.mioncore.api.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -22,6 +22,8 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Extended GameRegistry
@@ -66,7 +68,8 @@ public class Registry extends GameRegistry
      * @param meta MetaId / Damage to render
      * @param modelResourceLocation ModelResourceLocation for Item
      */
-    public static void render(IItem item, int meta, ModelResourceLocation modelResourceLocation)
+    @SideOnly(Side.CLIENT)
+    public static void registerModel(IItem item, int meta, ModelResourceLocation modelResourceLocation)
     {
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(
                 item.item(), meta, modelResourceLocation
@@ -74,14 +77,14 @@ public class Registry extends GameRegistry
     }
     
     /**
-     * Renders Item (see {@link #render(IItem, int, ModelResourceLocation)})
+     * Renders Item (see {@link #registerModel(IItem, int, ModelResourceLocation)})
      * @param item Item to render
      * @param meta MetaId / Damage to render
-     * @param modid Modid of Mod
-     * @param name Name of Model
+     * @param modelResourceLocation first param for ModelResourceLocation
      */
-    public static void render(IItem item, int meta, String modid, String name)
+    @SideOnly(Side.CLIENT)
+    public static void regiserModel(IItem item, int meta, String modelResourceLocation)
     {
-        render(item, meta, new ModelResourceLocation(modid + ":" + name, "inventory"));
+        registerModel(item, meta, new ModelResourceLocation(modelResourceLocation, "inventory"));
     }
 }

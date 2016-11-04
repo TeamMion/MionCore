@@ -14,26 +14,28 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.item;
+package teammion.mioncore.api.util;
 
 import net.minecraft.block.Block;
-import teammion.mioncore.util.IStackable;
+import net.minecraft.item.Item;
 
 /**
- * ItemBlock base class
+ * Provides easy to Item convert
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-public class ItemBlock extends net.minecraft.item.ItemBlock implements IStackable
+public interface IItem
 {
     /**
-     * Creates {@link ItemBlock} with Block to create from
-     * @param block Block to create ItemBlock from
+     * Returns Item based on {@code this}
+     * @return Converted Item
      */
-    public ItemBlock(Block block)
+    default Item item()
     {
-        super(block);
-        
-        setRegistryName(block.getRegistryName());
+        return this instanceof Item
+            ? (Item) this
+            : this instanceof Block
+                ? Item.getItemFromBlock((Block) this)
+                : null;
     }
 }

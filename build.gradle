@@ -43,13 +43,26 @@ minecraft {
 dependencies {
 }
 
+jar {
+    from sourceSets.api.output
+    from sourceSets.main.output
+}
+
+task apiJar(type : Jar) {
+    from sourceSets.api.output
+    
+    classifier = "api"
+}
+
 task deobfJar(type : Jar) {
+    from sourceSets.api.output
     from sourceSets.main.output
     
     classifier = "deobf"
 }
 
 task deobfSourceJar(type : Jar) {
+    from sourceSets.api.java
     from sourceSets.main.java
     from sourceSets.main.resources
     
@@ -57,8 +70,15 @@ task deobfSourceJar(type : Jar) {
 }
 
 artifacts {
+    archives apiJar
     archives deobfJar
     archives deobfSourceJar
+}
+
+javadoc {
+    source = sourceSets.api.java
+    
+    options.author = true
 }
 
 curseforge {
@@ -77,6 +97,7 @@ curseforge {
         
         addArtifact deobfSourceJar
         addArtifact deobfJar
+        addArtifact apiJar
     }
 }
 

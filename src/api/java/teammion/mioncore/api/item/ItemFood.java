@@ -14,11 +14,11 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.item;
+package teammion.mioncore.api.item;
 
 import net.minecraft.creativetab.CreativeTabs;
-import teammion.mioncore.util.INameSetter;
-import teammion.mioncore.util.IStackable;
+import teammion.mioncore.api.util.INameSetter;
+import teammion.mioncore.api.util.IStackable;
 
 /**
  * ItemFood base class

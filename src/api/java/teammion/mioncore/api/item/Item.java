@@ -14,44 +14,37 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.util;
+package teammion.mioncore.api.item;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.creativetab.CreativeTabs;
+import teammion.mioncore.api.util.INameSetter;
+import teammion.mioncore.api.util.IStackable;
 
 /**
- * Provide easy ItemStack creator
+ * Item base class
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-public interface IStackable extends IItem
+public class Item extends net.minecraft.item.Item implements IStackable, INameSetter
 {
     /**
-     * Returns an ItemStack with defined stackSize and MetaId / Damage
-     * @param stackSize stackSize of ItemStack
-     * @param meta MetaId / Damage of ItemStack
-     * @return ItemStack with defined stackSize and MetaId / Damage
+     * Creates {@link Item} with Registry/Unlocalized name
+     * @param name Item Registry / Unlocalized name
      */
-    default ItemStack stack(int stackSize, int meta)
+    public Item(String name)
     {
-        return new ItemStack(item(), stackSize);
+        setName(name);
     }
     
     /**
-     * Returns ItemStack with defined stackSize (see {@link #stack(int, int)})
-     * @param stackSize stackSize of ItemStack
-     * @return ItemStack with defined stackSize
+     * Creates {@link Item} with Registry/Unlocalized name and CreativeTabs
+     * @param name Item Registry / Unlocalized name
+     * @param creativeTab CreativeTabs
      */
-    default ItemStack stack(int stackSize)
+    public Item(String name, CreativeTabs creativeTab)
     {
-        return stack(stackSize, 0);
-    }
-    
-    /**
-     * Returns ItemStack (see {@link #stack(int, int)})
-     * @return ItemStack
-     */
-    default ItemStack stack()
-    {
-        return stack(1);
+        this(name);
+        
+        setCreativeTab(creativeTab);
     }
 }

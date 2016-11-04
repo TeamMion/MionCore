@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.block;
+package teammion.mioncore.api.block;
 
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
@@ -27,8 +27,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teammion.mioncore.util.INameSetter;
-import teammion.mioncore.util.IStackable;
+import teammion.mioncore.api.util.INameSetter;
+import teammion.mioncore.api.util.IStackable;
 
 import javax.annotation.Nullable;
 

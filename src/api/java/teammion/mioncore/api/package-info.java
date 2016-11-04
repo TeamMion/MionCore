@@ -14,25 +14,13 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.util;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-
 /**
- * Provides easy to Item convert
+ * Created on 04.11.16 at 21:47
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-public interface IItem
-{
-    /**
-     * Returns Item based on {@code this}
-     * @return Converted Item
-     */
-    default Item item()
-    {
-        return this instanceof Item ? (Item) this :
-                this instanceof Block ? Item.getItemFromBlock((Block) this) : null;
-    }
-}
+
+@API(owner = "mioncore", provides = "mioncore_api", apiVersion = "1.1.0")
+package teammion.mioncore.api;
+
+import net.minecraftforge.fml.common.API;

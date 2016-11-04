@@ -14,33 +14,26 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore.util;
+package teammion.mioncore.api.item;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import teammion.mioncore.api.util.IStackable;
 
 /**
- * Provide easy setName for Item/Block
+ * ItemBlock base class
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-public interface INameSetter
+public class ItemBlock extends net.minecraft.item.ItemBlock implements IStackable
 {
     /**
-     * Sets registry and unlocalized name on {@code this}
-     * @param name Name to set to
+     * Creates {@link ItemBlock} with Block to create from
+     * @param block Block to create ItemBlock from
      */
-    default void setName(String name)
+    public ItemBlock(Block block)
     {
-        if (this instanceof Item)
-        {
-            ((Item) this).setRegistryName(name);
-            ((Item) this).setUnlocalizedName(name);
-        }
-        if (this instanceof Block)
-        {
-            ((Block) this).setRegistryName(name);
-            ((Block) this).setUnlocalizedName(name);
-        }
+        super(block);
+        
+        setRegistryName(block.getRegistryName());
     }
 }

@@ -14,25 +14,33 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package teammion.mioncore;
+package teammion.mioncore.api.util;
 
-import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.Level;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 /**
- * This is just the Mod class for Forge to recognize this as a mod.
+ * Provide easy setName for Item/Block
  *
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
-@Mod(modid = "mioncore")
-public class MionCore
+public interface INameSetter
 {
-    @Mod.Instance
-    public static MionCore instance;
-    
-    public MionCore()
+    /**
+     * Sets registry and unlocalized name on {@code this}
+     * @param name Name to set to
+     */
+    default void setName(String name)
     {
-        FMLLog.log("mioncore", Level.INFO, "MionCore enabled");
+        if (this instanceof Item)
+        {
+            ((Item) this).setRegistryName(name);
+            ((Item) this).setUnlocalizedName(name);
+        }
+        if (this instanceof Block)
+        {
+            ((Block) this).setRegistryName(name);
+            ((Block) this).setUnlocalizedName(name);
+        }
     }
 }
