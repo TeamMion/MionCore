@@ -95,9 +95,9 @@ curseforge {
         
         mainArtifact jar
         
-        addArtifact deobfSourceJar
+        addArtifact api
         addArtifact deobfJar
-        addArtifact apiJar
+        addArtifact deobfSourceJar
     }
 }
 
