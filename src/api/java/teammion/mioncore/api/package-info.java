@@ -20,7 +20,7 @@
  * @author Stefan Wimmer {@literal <stefanwimmer128@gmail.com>}
  */
 
-@API(owner = "mioncore", provides = "mioncore_api", apiVersion = "1.1.0")
+@API(owner = "mioncore", provides = "mioncore_api", apiVersion = MionCoreAPI.VERSION)
 package teammion.mioncore.api;
 
 import net.minecraftforge.fml.common.API;

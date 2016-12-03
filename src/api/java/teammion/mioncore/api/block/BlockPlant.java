@@ -30,8 +30,6 @@ import net.minecraft.world.World;
 import teammion.mioncore.api.util.INameSetter;
 import teammion.mioncore.api.util.IStackable;
 
-import javax.annotation.Nullable;
-
 /**
  * BlockPlant base class
  *
