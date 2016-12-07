@@ -3,11 +3,11 @@ buildscript {
         jcenter()
         
         maven {
-            url = "http://files.minecraftforge.net/maven"
+            url "http://files.minecraftforge.net/maven"
         }
         
         maven {
-            url = "https://plugins.gradle.org/m2"
+            url "https://plugins.gradle.org/m2"
         }
     }
     
@@ -21,8 +21,8 @@ apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: "com.matthewprenger.cursegradle"
 
 version = modversion
-group = "teammion." + modid
-archivesBaseName = modid + "_" + mcversion
+group = "teammion.$modid"
+archivesBaseName = "${modid}_${mcversion}"
 
 sourceCompatibility = targetCompatibility = "1.8"
 
@@ -31,7 +31,7 @@ compileJava {
 }
 
 minecraft {
-    version = mcversion + "-" + forgeversion
+    version = "$mcversion-$forgeversion"
     
     runDir = "run"
     
